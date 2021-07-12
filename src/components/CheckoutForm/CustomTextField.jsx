@@ -7,12 +7,12 @@ const FormInput = ({ name, label, required }) => {
   return (
     <Grid item xs={12} sm={6}>
       <Controller
-        as={TextField}
+        render={({ field }) => (
+          <TextField {...field} label={label} fullWidth required />
+        )}
         control={control}
-        fullWidth
         name={name}
-        label={label}
-        required={required}
+        defaultValue=""
       />
     </Grid>
   );

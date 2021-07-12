@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Navbar, Products, Cart, Checkout } from "./components";
 import { commerce } from "./lib/commerce";
-import { AirlineSeatLegroomReducedRounded } from "@material-ui/icons";
 
 require("dotenv").config();
 
@@ -62,8 +61,7 @@ const App = () => {
         newOrder
       );
 
-      AirlineSeatLegroomReducedRounded(incomingOrder);
-
+      setOrder(incomingOrder);
       refreshCart();
     } catch (error) {
       setErrorMessage(error.data.error.message);
@@ -103,14 +101,11 @@ const App = () => {
           </Route>
           <Route path="/checkout" exact>
             <Checkout
-            // cart={cart}
-            // order={order}
-            // onCaptureCheckout={handleCaptureCheckout}
-            // error={errorMessage}
+              cart={cart}
+              order={order}
+              onCaptureCheckout={handleCaptureCheckout}
+              error={errorMessage}
             />
-          </Route>
-          <Route exact path="/checkout">
-            <Checkout />
           </Route>
         </Switch>
       </div>
